@@ -44,7 +44,7 @@ export default function Editblog(props) {
         position: toast.POSITION.TOP_RIGHT,
       });
     } catch (error) {
-      toast.error("An error occured", {
+      toast.error("An error occured!", {
         position: toast.POSITION.TOP_RIGHT,
       });
       console.log(error.message);
