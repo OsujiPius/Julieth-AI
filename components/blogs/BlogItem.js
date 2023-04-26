@@ -1,5 +1,6 @@
 import React from "react";
 import { Router, useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 function BlogItem(props) {
   const router = useRouter();
@@ -8,14 +9,27 @@ function BlogItem(props) {
     router.push("/" + props.id);
   }
 
+  function editHandler() {
+    router.push("/" + props.id + "/edit");
+  }
+
   async function deleteBlogHandler() {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts/${props.id}`,
-      {
-        method: "DELETE",
-      }
-    ).catch((error) => console.error(error));
-    console.log(response);
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${props.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      toast.success("Post deleted successfully", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } catch (error) {
+      toast.error("An error occured", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      console.log(error.message);
+    }
   }
 
   return (
@@ -50,7 +64,10 @@ function BlogItem(props) {
           </svg>
         </button>
         <div className="flex items-center gap-3">
-          <button className="bg-[#7DB9B6] text-white px-2 py-1 rounded-lg">
+          <button
+            className="bg-[#7DB9B6] text-white px-2 py-1 rounded-lg"
+            onClick={editHandler}
+          >
             <svg
               width="24"
               stroke-width="1.5"
