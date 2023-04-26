@@ -1,5 +1,5 @@
 import Head from "next/head";
-import BlogList from "../components/blogs/blogList";
+import BlogList from "./../components/blogs/blogList";
 
 export default function HomePage(props) {
   return (
