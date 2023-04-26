@@ -7,7 +7,7 @@ export default function Header() {
         <Link href="/" passHref>
           <h2 className="text-2xl font-semibold text-gray-50">Julieth blog</h2>
         </Link>
-        <Link href="/newblog" className="pt-1 text-gray-300">
+        <Link href="/createblog" className="pt-1 text-gray-300">
           Create Post
         </Link>
       </div>
